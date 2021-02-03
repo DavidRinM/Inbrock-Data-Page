@@ -1,14 +1,16 @@
-import React, { useState, useEffect, Fragment, Component } from "react";
+import React, { Fragment, Component } from "react";
 import ReactSider from "../Sider/Sider"
 import { Link } from "react-router-dom"
 import { connect } from 'react-redux'
 import Highlighter from 'react-highlight-words'
 import { contentStyle, tableStyle} from "../styles"
 
-import { Layout, Table, Button, Input, Tag, Typography} from 'antd'
+import { Layout, Table, Button, Input, Typography} from 'antd'
 import Icon from "@ant-design/icons"
 
 import { fetchCoins, setSiderMenuItem} from "../Coins/actions"
+
+import coinGeckoLogo from "../../images/CoinGecko Logo.png"
 
 const { Content } = Layout;
 const { Title} = Typography;
@@ -89,43 +91,110 @@ class CoinList extends Component {
 
         const columns=[
             {
-                title:'Id',
-                dataIndex:'id',
-                key:'id',
-                ...this.getColumnSearchProps('id')
+                title:'#',
+                dataIndex: 'market_cap_rank',
+                key: 'market_cap_rank',
+                align: "center",
+                width: "3%"
             },
             {
-                title:'Symbol',
-                dataIndex:'symbol',
-                key:'symbol',
-                ...this.getColumnSearchProps('symbol')
+                title:"Logo",
+                dataIndex: "image",
+                key: "image",
+                align: "center",
+                width:"7%",
+                ...this.getColumnSearchProps("image"),
+                render: img => <img src={img} style={{width: "25px"}} alt="Logo"></img>
             },
             {
-                title:'Name',
+                title:'Nombre',
                 dataIndex:'name',
                 key:'name',
+                width:"14%",
                 ...this.getColumnSearchProps('name'),
-                render: item => <Tag color="purple">{item}</Tag>
+                render: name => <strong> <Link to={`/coin/${name.toLowerCase()}`} 
+                                style={{color:'black'}}>{name}</Link></strong>
             },
             {
-                title:'View Details',
-                dataIndex:'id',
-                key:'id',
-                render: id => (<Button type="primary"><Link to={`/coins/${id}`}>View</Link></Button>)
+                title:'Símbolo',
+                dataIndex:'symbol',
+                key:'symbol',
+                align: "center",
+                ...this.getColumnSearchProps('symbol'),
+                render: item => item.toUpperCase()
+            },
+            {
+                title: 'Precio Actual (USD)',
+                dataIndex: 'current_price',
+                key: 'current_price',
+                align: "left",
+                ...this.getColumnSearchProps('current_price'),
+                render: price =>  new Intl.NumberFormat(
+                    'en-US', {
+                        style:"currency",
+                        currency:"USD"
+                    }).format(price)
+            },
+            {
+                title: 'Monedas Circulando',
+                dataIndex: 'circulating_supply',
+                key: 'circulating_supply',
+                align: "left",
+                ...this.getColumnSearchProps('circulating_supply'),
+                render: sup =>  new Intl.NumberFormat(
+                    'en-US').format(sup)
+            },
+            {
+                title:'Capitalización (USD)',
+                dataIndex: 'market_cap',
+                key: 'market_cap',
+                align: "left",
+                ...this.getColumnSearchProps('market_cap'),
+                render: cap =>  new Intl.NumberFormat(
+                    'en-US', {
+                        style:"currency",
+                        currency:"USD"
+                    }).format(cap)
+            },
+            {
+                title:'Volumen (USD)',
+                dataIndex: 'total_volume',
+                key: 'total_volume',
+                align: "left",
+                ...this.getColumnSearchProps('total_volume'),
+                render: vol =>  new Intl.NumberFormat(
+                    'en-US', {
+                        style:"currency",
+                        currency:"USD"
+                    }).format(vol)
             }
         ];
         return (
             <Fragment>
                 <ReactSider/>
-                <Layout style={{ padding: '1rem' }}>
+                <Layout style={{ padding: '0rem' }}>
                     <Content style={contentStyle}>
                         <Title level={2}>Ranking Criptomonedas</Title>
                         <Table 
                         style={tableStyle}
-                        bordered={true}
+                        bordered={false}
                         loading={loading} 
                         dataSource={this.props.data} 
-                        columns={columns}/>
+                        columns={columns}
+                        showHeader={true}
+                        title={() => {
+                            return (
+                                <div>
+                                    <small>
+                                        Información obtenida de:  
+                                        <a href="https://coingecko.com">
+                                            CoinGecko <img src={coinGeckoLogo} style={{width:"20px"}} alt="CoinGecko-Logo"></img>
+                                        </a>
+                                    </small>
+                                </div>
+                            );
+                        }}
+                        scroll={{x: 100}}/>
                     </Content>
                 </Layout>
             </Fragment>

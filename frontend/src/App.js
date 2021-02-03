@@ -1,23 +1,30 @@
 import React from "react" 
-import {Route} from "react-router-dom"
+import { BrowserRouter as Router, Route} from "react-router-dom"
 
 import { Layout } from 'antd'
 
 import Navbar from "./components/Navbar"
 import ReactFooter from "./components/Footer/Footer"
 import CoinList from "./components/Coins/CoinList"
+import Login from "./components/Login/Login"
+import About from "./components/General/About"
 
 import "./App.css";
 
 function App() {
   return(
-    <Layout style={{minHeight: '100vh', lineHeight: '1.6rem'}}>
-      <Navbar/>
-      <Layout>
-        <Route path="/" component={CoinList}/>
+    <Router>
+      <Layout style={{minHeight: '100vh', lineHeight: '1.6rem'}}>
+        <Navbar/>
+          <Layout>
+            <Route path="/" exact component={About}/>
+            <Route path="/about" exact component={About}/>
+            <Route path="/data" exact component={CoinList}/>
+            <Route path="/signin" exact component={Login}/>
+          </Layout>
+        <ReactFooter/>
       </Layout>
-      <ReactFooter/>
-    </Layout>
+    </Router>
   );
 }
 

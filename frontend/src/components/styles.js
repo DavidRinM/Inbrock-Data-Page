@@ -1,10 +1,10 @@
-import { AutoComplete } from "antd";
+//import { AutoComplete } from "antd";
 
 export const contentStyle = {
     background: '#ffffff',
-    padding: '2rem',
+    padding: '0.5rem',
     margin: 0,
-    minHeight: 700,
+    minHeight: 500,
 }
 
 export const cardStyle = {
@@ -30,5 +30,5 @@ export const titleStyle = {
 }
 
 export const tableStyle = {
-    overflowX: 'auto'
+    overflowX: 'auto',
 }

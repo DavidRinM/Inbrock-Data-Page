@@ -12,7 +12,12 @@ export const GET_STATUS_UPDATES = 'GET_STATUS_UPDATES';
 
 
 export const fetchCoins = () => async (dispatch, getState ) => {
-    const response = await coinGecko.get('/coins/list')
+    const response = await coinGecko.get('/coins/markets', {
+        params: {
+            vs_currency: "usd",
+            order: "market_cap_desc"
+        }
+    })
     dispatch({
         type: GET_COIN_LIST,
         payload: response.data

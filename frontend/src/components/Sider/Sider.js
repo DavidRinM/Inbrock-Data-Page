@@ -17,7 +17,7 @@ class ReactSider extends Component {
                 <Sider 
                 breakpoint="md"
                 collapsedWidth="0"
-                width={240} 
+                width={200} 
                 style={{ background: '#fff' }}>
                     <Menu
                     mode="inline"
@@ -27,7 +27,7 @@ class ReactSider extends Component {
                     >
                    {/* Ranking Menu */}
                     <Menu.Item>
-                        <Link to="/ranking">
+                        <Link to="/">
                             <span>
                             <DollarOutlined style={iconStyle}/>Ranking
                             </span>
