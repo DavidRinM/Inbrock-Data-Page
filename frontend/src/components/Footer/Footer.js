@@ -1,14 +1,15 @@
 import React from "react"
 import { Layout } from "antd"
+import { footerStyle } from "../styles"
 
-const { footerLayout } = Layout;
+const { Footer } = Layout;
 
-const Footer = () => {
+const ReactFooter = () => {
     return(
-        <footerLayout>
-            Hecho con amor desde México
-        </footerLayout>
+        <Footer style={footerStyle}>
+            Hecho con ❤️ desde México 
+        </Footer>
     );
 }
 
-export default Footer;
+export default ReactFooter;

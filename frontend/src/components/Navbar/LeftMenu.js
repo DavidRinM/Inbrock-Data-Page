@@ -10,7 +10,7 @@ const LeftMenu = () => {
   return (
     <Menu mode={md ? "horizontal" : "inline"}>
       <Menu.Item key="mail">
-        <a href="https://inbrock.com">Home</a>
+        <a href="https://inbrock.com">Inicio</a>
       </Menu.Item>
       {/* <SubMenu key="sub1" title={<span>Data</span>}>
         <MenuItemGroup title="Item 1">
@@ -22,8 +22,8 @@ const LeftMenu = () => {
           <Menu.Item key="setting:4">Option 4</Menu.Item>
         </MenuItemGroup>
       </SubMenu> */}
-      <Menu.Item key="alipay">
-        <a href="/markets">Data</a>
+      <Menu.Item key="data">
+        <a href="/ranking">Datos</a>
       </Menu.Item>
     </Menu>
   );

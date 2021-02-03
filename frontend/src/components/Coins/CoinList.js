@@ -3,73 +3,15 @@ import ReactSider from "../Sider/Sider"
 import { Link } from "react-router-dom"
 import { connect } from 'react-redux'
 import Highlighter from 'react-highlight-words'
+import { contentStyle, tableStyle} from "../styles"
 
 import { Layout, Table, Button, Input, Tag, Typography} from 'antd'
 import Icon from "@ant-design/icons"
 
-import coinGecko from "../../api/coinGecko.js"
 import { fetchCoins, setSiderMenuItem} from "../Coins/actions"
 
 const { Content } = Layout;
-const { Title, Paragraph} = Typography;
-
-/* export const CoinList = () => {
-    const [isLoading, setIsLoading] = useState(false)
-    const [coins, setCoins] = useState([])
-
-    useEffect(() => {
-        const fetchData = async () => {
-            setIsLoading(true);
-
-            const res = await coinGecko.get("/coins/markets", {
-            params: {
-                vs_currency: "usd",
-                
-                }
-            });
-            console.log(res.data)
-            setCoins(res.data);
-            setIsLoading(false);
-        };
-        fetchData();
-
-    });
-
-
-
-    const renderCoins = () => {
-        if(!isLoading) {
-            return (
-                <Fragment>
-                    <div>
-                        {coins.map(coin => {
-                            return(
-                                <div>
-                                    {coin.id}
-                                </div>
-                            );
-                        })}
-                    </div>
-                </Fragment>
-            );
-        }
-
-        return <div>Loading...</div>
-    };
-
-    return(
-        <Fragment>
-            <Sider/>
-            <Layout style={{ padding:'1rem'}}>
-                <Content>
-                    <title level={2}>Lista de Monedas</title>
-                </Content>
-            </Layout>
-        </Fragment>
-    );
-};
-
-export default CoinList; */
+const { Title} = Typography;
 
 class CoinList extends Component {
 
@@ -176,11 +118,10 @@ class CoinList extends Component {
             <Fragment>
                 <ReactSider/>
                 <Layout style={{ padding: '1rem' }}>
-                    <Content >
-                        <Title level={2}>Coins List</Title>
-                        <Paragraph>This page lists cryptocurrencies available through the CoinGecko API. To view details of a given coin, click 'View' button. You can also filter by Id, Symbol or Name to drill down and find a coin.</Paragraph>
+                    <Content style={contentStyle}>
+                        <Title level={2}>Ranking Criptomonedas</Title>
                         <Table 
-                        
+                        style={tableStyle}
                         bordered={true}
                         loading={loading} 
                         dataSource={this.props.data} 

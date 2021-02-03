@@ -3,7 +3,9 @@ import { Link } from "react-router-dom"
 import { connect } from "react-redux"
 
 import { Layout, Menu } from "antd"
-import Icon from "@ant-design/icons"
+import { DollarOutlined, TeamOutlined, BankOutlined } from "@ant-design/icons"
+
+import {iconStyle} from "../styles"
 
 const { SubMenu } = Menu;
 const { Sider } = Layout;
@@ -23,41 +25,34 @@ class ReactSider extends Component {
                     defaultOpenKeys={['menu-exchange-rates', 'menu-updates', 'menu-coins', 'menu-events', 'menu-global', 'menu-exchanges']}
                     style={{ height: '100%', borderRight: 0 }}
                     >
-                   {/* Coin Sub Menu */}
-                    <SubMenu
-                        key="menu-coins"
-                        title={
-                        <span>
-                            <Icon type="dollar" />Coins
-                        </span>
-                        }
-                        >
-                        <Menu.Item key="coin-list"><Link to='/coins'>Coin Listing</Link></Menu.Item>
-                        <Menu.Item key="coin-detail"><Link to='/coins/bitcoin'>Coin Detail View</Link></Menu.Item>
-                    </SubMenu>
+                   {/* Ranking Menu */}
+                    <Menu.Item>
+                        <Link to="/ranking">
+                            <span>
+                            <DollarOutlined style={iconStyle}/>Ranking
+                            </span>
+                        </Link>
+                    </Menu.Item>
                     
-                    {/* Events Sub Menu */}
-                    <SubMenu
-                        key="menu-events"
-                        title={
-                        <span>
-                            <Icon type="team" />Events
-                        </span>
-                        }
-                        >
-                        <Menu.Item key="events-list"><Link to='/events/list'>Events Listing</Link></Menu.Item>
-                    </SubMenu>
+                    {/* Events Menu */}
+                    <Menu.Item>
+                        <Link to="/events">
+                            <span>
+                            <TeamOutlined style={iconStyle}/>Eventos
+                            </span>
+                        </Link>
+                    </Menu.Item>
                     
                     {/* Exchanges Menu */}
                     <SubMenu
                     key="menu-exchanges"
                     title={
                         <span>
-                            <Icon type="bank" />
+                            <BankOutlined style={iconStyle}/>
                             Exchanges
                         </span>
                         }>
-                    <Menu.Item key="exchanges-list"><Link to='/exchanges/list'>Exchanges Listing</Link></Menu.Item>
+                    <Menu.Item key="exchanges-list"><Link to='/exchanges/list'>Listado Exchanges</Link></Menu.Item>
                     </SubMenu>
                     </Menu>
                 </Sider>
