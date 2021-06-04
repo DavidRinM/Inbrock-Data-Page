@@ -8,6 +8,7 @@ import ReactFooter from "./components/Footer/Footer"
 import CoinList from "./components/Coins/CoinList"
 import Login from "./components/Login/Login"
 import About from "./components/General/About"
+import Events from "./components/Events/Events"
 
 import "./App.css";
 
@@ -17,9 +18,9 @@ function App() {
       <Layout style={{minHeight: '100vh', lineHeight: '1.6rem'}}>
         <Navbar/>
           <Layout>
-            <Route path="/" exact component={About}/>
+            <Route path="/" exact component={CoinList}/>
             <Route path="/about" exact component={About}/>
-            <Route path="/data" exact component={CoinList}/>
+            <Route path="/events" exact component={Events}/>
             <Route path="/signin" exact component={Login}/>
           </Layout>
         <ReactFooter/>

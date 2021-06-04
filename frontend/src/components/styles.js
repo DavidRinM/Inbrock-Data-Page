@@ -30,5 +30,5 @@ export const titleStyle = {
 }
 
 export const tableStyle = {
-    overflowX: 'auto',
+    overflowX: 'auto'
 }

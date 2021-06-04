@@ -9,7 +9,7 @@ import {GET_COIN_LIST,
         GET_GLOBAL,
         GET_STATUS_UPDATES,
         SET_HEADER_MENU_ITEM,
-        SET_SIDER_MENU_ITEM } from '../components/Coins/actions';
+        SET_SIDER_MENU_ITEM } from '../components/actions';
 
 
 const coinsReducer = (state=[], action) => {

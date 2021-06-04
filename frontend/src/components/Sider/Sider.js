@@ -4,6 +4,7 @@ import { connect } from "react-redux"
 
 import { Layout, Menu } from "antd"
 import { DollarOutlined, TeamOutlined, BankOutlined } from "@ant-design/icons"
+import rank from "../../images/icons/rank.svg"
 
 import {iconStyle} from "../styles"
 
@@ -17,7 +18,7 @@ class ReactSider extends Component {
                 <Sider 
                 breakpoint="md"
                 collapsedWidth="0"
-                width={200} 
+                width={210} 
                 style={{ background: '#fff' }}>
                     <Menu
                     mode="inline"
@@ -29,11 +30,23 @@ class ReactSider extends Component {
                     <Menu.Item>
                         <Link to="/">
                             <span>
-                            <DollarOutlined style={iconStyle}/>Ranking
+                            <img src={rank} style={{height:"1.25rem"}} alt="Ranking"></img>  Ranking
                             </span>
                         </Link>
                     </Menu.Item>
-                    
+
+                    {/* Coins Menu */}
+                    <SubMenu
+                    key="coins-menu"
+                    title={
+                        <span>
+                            <DollarOutlined style={iconStyle}/>
+                            Criptomonedas
+                        </span>
+                        }>
+                        <Menu.Item key="exchanges-list"><Link to='/data/defi'>DeFi</Link></Menu.Item>
+                    </SubMenu>
+
                     {/* Events Menu */}
                     <Menu.Item>
                         <Link to="/events">

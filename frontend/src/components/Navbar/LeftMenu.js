@@ -30,7 +30,7 @@ const LeftMenu = () => {
         </MenuItemGroup>
       </SubMenu> */}
       <Menu.Item key="data">
-        <a href="/data">
+        <a href="/">
           <span>
             <DatabaseOutlined/>Datos
           </span>

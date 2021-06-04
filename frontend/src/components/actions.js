@@ -1,4 +1,4 @@
-import coinGecko from "../../api/coinGecko";
+import coinGecko from "../api/coinGecko";
 export const GET_COIN_LIST = 'GET_COIN_LIST';
 export const GET_COIN_DETAILS = 'GET_COIN_DETAILS';
 export const GET_COIN_CHART = 'GET_COIN_CHART';

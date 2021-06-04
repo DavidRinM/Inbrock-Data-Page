@@ -8,7 +8,7 @@ import { contentStyle, tableStyle} from "../styles"
 import { Layout, Table, Button, Input, Typography} from 'antd'
 import Icon from "@ant-design/icons"
 
-import { fetchCoins, setSiderMenuItem} from "../Coins/actions"
+import { fetchCoins, setSiderMenuItem} from "../actions"
 
 import coinGeckoLogo from "../../images/CoinGecko Logo.png"
 
@@ -120,14 +120,14 @@ class CoinList extends Component {
                 dataIndex:'symbol',
                 key:'symbol',
                 align: "center",
+                width: "1%",
                 ...this.getColumnSearchProps('symbol'),
-                render: item => item.toUpperCase()
+                render: sym => sym.toUpperCase()
             },
             {
-                title: 'Precio Actual (USD)',
-                dataIndex: 'current_price',
-                key: 'current_price',
-                align: "left",
+                title:'Precio Actual (USD)',
+                dataIndex:'current_price',
+                key:'current_price',
                 ...this.getColumnSearchProps('current_price'),
                 render: price =>  new Intl.NumberFormat(
                     'en-US', {
